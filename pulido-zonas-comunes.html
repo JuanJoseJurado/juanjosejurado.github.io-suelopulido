@@ -38,10 +38,39 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <script src="cookies.js"></script>
 
 </head>
 
-<body class="service-details-page">
+<body class="index-page">
+
+  <!-- Barra de consentimiento RGPD -->
+  <div id="cookie-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#333;color:#feb900;padding:10px;text-align:center;">
+    Utilizamos cookies propias y de terceros para analizar el uso de la web y mejorar tu experiencia.
+    <a href="/politica-cookies" target="_blank" style="color:#fff;text-decoration:underline;">Más información</a>
+    <br>
+    <button onclick="acceptCookies()" style="margin:5px;">Aceptar todas</button>
+    <button onclick="rejectCookies()" style="margin:5px;">Rechazar</button>
+  </div>
+  <script>
+    function acceptCookies() {
+      localStorage.setItem('cookieConsent','accepted');
+      document.getElementById('cookie-bar').style.display='none';
+      loadAnalyticsAndGTM();
+    }
+    function rejectCookies() {
+      localStorage.setItem('cookieConsent','rejected');
+      document.getElementById('cookie-bar').style.display='none';
+    }
+    window.onload = function() {
+      var consent = localStorage.getItem('cookieConsent');
+      if (!consent) {
+        document.getElementById('cookie-bar').style.display='block';
+      } else if (consent === 'accepted') {
+        loadAnalyticsAndGTM();
+      }
+    }
+  </script>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
