@@ -30,15 +30,7 @@ PDCookieConsent.config({
 </script>
 
 
-  <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-D4NS7LB5RM"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-D4NS7LB5RM');
-      </script>
+    
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Pulidor Suelo Córdoba y Mármol | Politica de privacidad</title>
@@ -54,14 +46,7 @@ PDCookieConsent.config({
   <link rel="canonical" href="https://pulidosabrillantadoscordoba.es/" />
   <link href="https://pulidosabrillantadoscordoba.es/" hreflang="es" rel="alternate">
 
-  <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WRLV558G');</script>
-  <!-- End Google Tag Manager -->
-
+    
   
 
   <!-- Favicons -->
@@ -114,18 +99,69 @@ PDCookieConsent.config({
       "addressRegion": "Córdoba",
       "addressCountry": "ES"
     },
-    "telephone": "+34675665375"
-}
+    "telephone":   }
 </script>
+
+<!-- Google Analytics y Google Tag Manager SOLO se cargan tras el consentimiento -->
+  <script>
+    function loadAnalyticsAndGTM() {
+      // Google Analytics (gtag.js)
+      var gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-D4NS7LB5RM";
+      document.head.appendChild(gtagScript);
+
+      gtagScript.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-D4NS7LB5RM');
+      };
+
+      // Google Tag Manager
+      var gtmScript = document.createElement('script');
+      gtmScript.innerHTML = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WRLV558G');";
+      document.head.appendChild(gtmScript);
+
+      // Google Tag Manager (noscript) para el <body>
+      var gtmNoScript = document.createElement('div');
+      gtmNoScript.innerHTML = '<noscript><iframe src="https://www.googletagmanager.com/ns?id=GTM-WRLV558G" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>';
+      document.body.insertBefore(gtmNoScript, document.body.firstChild);
+    }
+  </script>
 
 </head>
 
 <body class="index-page">
 
-  <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns ?id=GTM-WRLV558G"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  <!-- Barra de consentimiento RGPD -->
+  <div id="cookie-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#333;color:#feb900;padding:10px;text-align:center;">
+    Utilizamos cookies propias y de terceros para analizar el uso de la web y mejorar tu experiencia.
+    <a href="/politica-cookies" target="_blank" style="color:#fff;text-decoration:underline;">Más información</a>
+    <br>
+    <button onclick="acceptCookies()" style="margin:5px;">Aceptar todas</button>
+    <button onclick="rejectCookies()" style="margin:5px;">Rechazar</button>
+  </div>
+  <script>
+    function acceptCookies() {
+      localStorage.setItem('cookieConsent','accepted');
+      document.getElementById('cookie-bar').style.display='none';
+      loadAnalyticsAndGTM();
+    }
+    function rejectCookies() {
+      localStorage.setItem('cookieConsent','rejected');
+      document.getElementById('cookie-bar').style.display='none';
+    }
+    window.onload = function() {
+      var consent = localStorage.getItem('cookieConsent');
+      if (!consent) {
+        document.getElementById('cookie-bar').style.display='block';
+      } else if (consent === 'accepted') {
+        loadAnalyticsAndGTM();
+      }
+    }
+  </script>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -324,22 +360,7 @@ PDCookieConsent.config({
 
 </footer>
 
-<!-- cookies -->
-<div id="barracookies">
-En cumplimiento de la Ley 34/2002, de servicios de la sociedad de la información le recordamos que al navegar por este sitio web está aceptando el uso de cookies.
-<br><a href="javascript:void(0);" onclick="var expiration = new Date(); expiration.setTime(expiration.getTime() + (60000*60*24*365)); setCookie(&#39;avisocookies&#39;,&#39;1&#39;,expiration,&#39;/&#39;);document.getElementById(&#39;barracookies&#39;).style.display=&#39;none&#39;;"><b>Cerrar</b></a> <a href="https://pulidosabrillantadoscordoba.es/politica-cookies" target="_blank">Más información</a> | <a href="http://www.google.com/intl/es-419/policies/technologies/types/" target="_blank">Tipos de cookies</a> | 
-</div>
-<!-- Estilo barra CSS -->
-<style>#barracookies {display: none;z-index: 99999;position:fixed;left:0px;right:0px;bottom:0px;width:100%;min-height:40px;padding:5px;background: #333333;color:  #feb900;line-height:20px;font-family:verdana;font-size:12px;text-align:center;box-sizing:border-box;} #barracookies a:nth-child(2) {padding:4px;background: #b47946;border-radius:5px;text-decoration:none;}  #barracookies a {color: #fff;text-decoration: none;}</style>
-<!-- Gestión de cookies-->
-<!-- Gestión barra aviso cookies -->
-
-<script type="text/javascript">
-function setCookie(name,value,expires,path,domain,secure){document.cookie=name+"="+escape(value)+((expires==null)?"":"; expires="+expires.toGMTString())+((path==null)?"":"; path="+path)+((domain==null)?"":"; domain="+domain)+((secure==null)?"":"; secure")}function getCookie(name){var cname=name+"=";var dc=document.cookie;if(dc.length>0){begin=dc.indexOf(cname);if(begin!=-1){begin+=cname.length;end=dc.indexOf(";",begin);if(end==-1)end=dc.length;return unescape(dc.substring(begin,end))}}return null}function delCookie(name,path,domain){if(getCookie(name)){document.cookie=name+"="+((path==null)?"":"; path="+path)+((domain==null)?"":"; domain="+domain)+"; expires=Thu, 01-Jan-70 00:00:01 GMT"}}</script>
-<script type="text/javascript">
-var comprobar=getCookie("avisocookies");if(comprobar!=null){}
-else{var expiration=new Date();expiration.setTime(expiration.getTime()+(60000*60*24*365));setCookie("avisocookies","1",expiration);document.getElementById("barracookies").style.display="block";}</script>
-
+ 
 
 
 
